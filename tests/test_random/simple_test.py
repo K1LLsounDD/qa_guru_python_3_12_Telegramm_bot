@@ -22,7 +22,7 @@ def test_approved_2():
 
 def test_approved_3():
     browser.open('/automation-practice-form')
-    assert browser.element('.practice-form-wrapper').should(have.tag('Student Registration Form'))
+    assert browser.element('.practice-form-wrapper').should(have.text('Student Registration Form'))
 
 
 def test_approved_4():
@@ -50,7 +50,9 @@ def test_skipped_3():
 
 def test_failed():
     browser.open('/automation-practice-form')
-    assert browser.element('#userName-label').should(have.text('Gigi za shagi'))
+    real_text = browser.element('#userName-label').should(have.text('Name'))
+    fake_text = browser.element('#userName-label').should(have.text('Gigi za shagi'))
+    assert real_text == fake_text
 
 
 def test_failed_2():
